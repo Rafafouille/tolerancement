@@ -1,0 +1,5 @@
+Coaxialité.
+Ligne réputée rectiligne (axe du cylindre), joignant les centres des sections de la surface réputée circulaire.
+Ligne réputée rectiligne (axe du cylindre), joignant les centres des sections de la surface réputée circulaire (indiquée par A).
+Axe du plus petit cylindre circonscrit à la surface de l'élément de référence.
+Espace compris dans un cylindre de diamètre &empty;5mm, de même axe que la R.S.

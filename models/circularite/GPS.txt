@@ -1,0 +1,5 @@
+Circularité.
+Chacune des lignes réputées circulaires, des sections de la surface réputée cylindrique.
+-
+-
+Chaque E.T. doit être compris entre deux cercles dont le rayon différe de la tolérance (5mm ici).

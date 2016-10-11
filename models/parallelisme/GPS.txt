@@ -1,0 +1,5 @@
+Parallélisme.
+Surface réputée plane.
+Surface réputée plane (indiquée par A)
+Plan tangeant, extérieur matière, minimisant le défaut de forme.
+Espace compris entre deux plans parallèles, distant de 7mm l'un de l'autre, et parallèles à la R.S.
