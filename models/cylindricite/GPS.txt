@@ -1,0 +1,5 @@
+Cylindricité
+Surface réputée cylindrique
+-
+-
+Espace comprise entre deux cylindres coaxiaux, dont le rayon diffère de la tolérance (5mm)

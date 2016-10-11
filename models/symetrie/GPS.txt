@@ -1,0 +1,5 @@
+Symétrie.
+Surface réputée plane, médiane des deux surface réputée planes.
+Surface réputée plane (indiquée par A), médiane des deux surface réputée planes.
+Plan médian des deux surfaces réputées planes, tangentes et extérieure matière, minimisant le défaut de forme.
+Espace compris entre deux plans parallèles, distants de 2mm l'un de l'autre, centrés sur la R.S.

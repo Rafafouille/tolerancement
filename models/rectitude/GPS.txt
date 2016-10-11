@@ -1,0 +1,5 @@
+Rectitude.
+Ligne réputée rectiligne.
+-
+-
+Espace compris dans un cylindre de diamètre &empty;5mm.

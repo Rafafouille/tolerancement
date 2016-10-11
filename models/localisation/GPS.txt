@@ -1,0 +1,5 @@
+Localisation.
+Ligne réputée rectiligne (axe du trou), joignant les centres des section de la surface réputée cylindrique.
+Surfaces réputées planes A, B et C.
+A : Plan tangeant, extérieur matières, minimisant le défaut de forme.<br/>B : Plan tangeant, extérieur matières, minimisant le défaut de forme et perpendiculaire à la R.S. de A.<br/>C : Plan tangeant, extérieur matières, minimisant le défaut de forme et perpendiculaire aux R.S. de A et de B.
+Espace compris dans un cylindre de diamètre &empty;4mm, dont l'axe est perpendiculaire à la R.S. de A, situé à 12mm de la R.S. de B, et de 12mm de la R.S. de C.

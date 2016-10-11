@@ -1,0 +1,5 @@
+Planéité.
+Surface réputée plane.
+-
+-
+Espace compris entre deux plans parallèles, distants l'un de l'autre de 3mm.
