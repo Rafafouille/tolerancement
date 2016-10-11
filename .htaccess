@@ -1,0 +1,3 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule	^-(.*)$	viewer.php?specif=$1	[L]
