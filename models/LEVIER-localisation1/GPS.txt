@@ -1,0 +1,5 @@
+Localisation.
+Surface réputée plane.
+Surface réputée plane, indiquée par [ A ].
+Plan tangeant, extérieur-matière (minimisant le défaut de forme).
+L'E.T doit être compris entre 2 plans parallèles, distant de 0,2mm l'un de l'autre, tous deux centrés sur un plan distant de [ 7,5mm ] de la RS.

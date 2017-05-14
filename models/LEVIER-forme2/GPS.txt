@@ -1,0 +1,5 @@
+Tolérance de forme.
+Surface réputée parfaite, de forme "quelconque".
+Surface réputée plane, indiquée par [A]. Ligne reputée rectiligne, axe de la surface réputée cylindrique indiquée par [B]. Surface réputée plane indiquée par [D].
+[A] : Plan tangeant, extérieur-matière (minimisant le défaut de forme). [B] : Axe du cylindre perpendiculaire à [A] de diamètre correspondant au maximum de matière (&#8709;8). [D] : Plan tangeant extérieur matière perpendiculaire à [A].
+L'E.T doit être compris entre 2 enveloppes suposées parfaites distantes de 0,2mm centrées sur la surface nominale (=enveloppe de toutes les sphères centrées sur la surface nominale)

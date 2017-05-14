@@ -12,7 +12,7 @@
 		</head>
 	<body>
 	    
-		<h1>Tolérancement géométrique</h1>
+		<h1>Exemples de base du tolérancement géométrique</h1>
 
 
 			<h2>Tolérances de forme</h2>
@@ -83,6 +83,24 @@
 						</a>
 					</div>
 				</div>
+
+
+		<h2></h2>
+		<h1>Levier de platine</h1>
+
+			
+				<div class="listeBoutons">
+					<div class="boutonMenu">
+						<a href="levier-de-platine.php">
+							Tolérance de localisation<br/>
+							<img src="./sources/images/bouton-levier-platine.png"/>
+						</a>
+					</div>
+				</div>
+
+
+
+
 
 
 	</body>

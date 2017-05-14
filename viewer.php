@@ -63,12 +63,12 @@ switch($get)
 			<!-- Bibli Javascript --------------->
 
 			<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script src="http://threejs.org/build/three.min.js"></script>	<!-- http://mrdoob.github.com/three.js/build/three.min.js -->
+			<script src="http://libs.allais.eu/threeJS/three.min.js"></script>	<!-- http://mrdoob.github.com/three.js/build/three.min.js -->
 			<!--<script src="./sources/JS/threejs/STLLoader.js"></script>-->
-			<script src="./sources/JS/threejs/Detector.js"></script>
-			<script src="./sources/JS/threejs/ColladaLoader.js"></script>
-			<script src="./sources/JS/threejs/OrbitControls.js"></script>
-			<script src="./sources/JS/jquery-ui/external/jquery/jquery.js"></script>
+			<script src="http://libs.allais.eu/threeJS/Detector.js"></script>
+			<script src="http://libs.allais.eu/threeJS/ColladaLoader.js"></script>
+			<script src="http://libs.allais.eu/threeJS/OrbitControls.js"></script>
+			<!--<script src="./sources/JS/jquery-ui/external/jquery/jquery.js"></script>-->
 			<script src="./sources/JS/jquery-ui/jquery-ui.min.js"></script>
 			<link rel="stylesheet" href="./sources/JS/jquery-ui/jquery-ui.css">
 		</head>
@@ -133,6 +133,41 @@ switch($get)
 				</div>
 
 
+				<!-- Script gérant le temps de chargement --->
+				<script type="text/javascript">
+						//taille des fichiers à charger
+						taille_nominal=0;
+						taille_reel=0;
+						taille_ET=0;
+						taille_RS1=0;
+						taille_RS2=0;
+						taille_RS3=0;
+						taille_ZT=0;
+
+						taille_totale_nominal=0;
+						taille_totale_reel=0;
+						taille_totale_ET=0;
+						taille_totale_RS1=0;
+						taille_totale_RS2=0;
+						taille_totale_RS3=0;
+						taille_totale_ZT=0;
+
+						update_barre_progression=function()
+						{
+								var maxi=taille_totale_nominal+taille_totale_reel+taille_totale_ET+taille_totale_RS1+taille_totale_RS2+taille_totale_RS3+taille_totale_ZT;
+								var value=taille_nominal+taille_reel+taille_ET+taille_RS1+taille_RS2+taille_RS3+taille_ZT;
+
+								$("#iconeChargement progress").attr("max",maxi);
+								$("#iconeChargement progress").attr("value",value);
+
+								if(maxi==value && maxi!=0)//Si chargement terminé
+								{
+										$("#voileNoir,#iconeChargement").animate({opacity: 0},800,function(){$(this).remove()});
+								}
+						}
+				</script>
+
+
 
 				<!-- Script JAVASCRIPT générant la 3D ----------->
 				<script type="text/javascript">
@@ -147,6 +182,14 @@ switch($get)
 
 
 					function init(){
+
+
+						//Loader Manager, permettant d'afficher le chargement des objets ================
+						var manager = new THREE.LoadingManager();
+						manager.onProgress = function ( item, loaded, total ) {
+									  			console.log("Chargement : "+(loaded/total*100)+"%");
+										};
+
 
 						//========================================================================
 						// Rendu
@@ -196,96 +239,142 @@ switch($get)
 						var loader = new THREE.JSONLoader();
 
 						loader.load(dossier+'nominal.json',function(geometry){
-							materialeNominal = new THREE.MeshLambertMaterial({color:0xffff00});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							pieceNominale = new THREE.Mesh(geometry, materialeNominal);
-							//pieceNominale.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							pieceNominale.position.set(0, 0, 0);
-							pieceNominale.scale.set(2, 2, 2);
-							scene.add(pieceNominale);
-							renderer.render( scene, camera );
-						});
+																									materialeNominal = new THREE.MeshLambertMaterial({color:0xffff00});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																									pieceNominale = new THREE.Mesh(geometry, materialeNominal);
+																									//pieceNominale.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																									pieceNominale.position.set(0, 0, 0);
+																									pieceNominale.scale.set(2, 2, 2);
+																									scene.add(pieceNominale);
+																									renderer.render( scene, camera );
+																							},
+																						function (progression){
+																									taille_nominal=progression.loaded;
+																									taille_totale_nominal=progression.total;
+																									update_barre_progression();
+																						}
+						);
+
+
+
 
 
 						// prepare STL loader and load the model
 						//var oStlLoader = new THREE.STLLoader();
 						loader.load(dossier+'reel.json', function(geometry) {
-							materialeReel = new THREE.MeshLambertMaterial({color:0xffff00});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							pieceReelle = new THREE.Mesh(geometry, materialeReel);
-							//pieceReelle.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							pieceReelle.position.set(0, 0, 0);
-							pieceReelle.scale.set(2, 2, 2);
-							pieceReelle.visible=false;
-							scene.add(pieceReelle);
-							renderer.render( scene, camera );
-						});
+																							materialeReel = new THREE.MeshLambertMaterial({color:0xffff00});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																							pieceReelle = new THREE.Mesh(geometry, materialeReel);
+																							//pieceReelle.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																							pieceReelle.position.set(0, 0, 0);
+																							pieceReelle.scale.set(2, 2, 2);
+																							pieceReelle.visible=false;
+																							scene.add(pieceReelle);
+																							renderer.render( scene, camera );
+																					},
+																						function (progression){
+																									taille_reel=progression.loaded;
+																									taille_totale_reel=progression.total;
+																									update_barre_progression();
+																						}
+						);
+
 
 						// prepare STL loader and load the model
 						<?php if($afficheET) {?>
 						loader.load(dossier+'ET.json', function(geometry) {
-							materialeET = new THREE.MeshLambertMaterial({color:0x0000ff});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							meshET = new THREE.Mesh(geometry, materialeET);
-							//meshET.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							meshET.position.set(0, 0, 0);
-							meshET.scale.set(2, 2, 2);
-							meshET.visible=false;
-							scene.add(meshET);
-							renderer.render( scene, camera );
-						});
+																								materialeET = new THREE.MeshLambertMaterial({color:0x0000ff});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																								meshET = new THREE.Mesh(geometry, materialeET);
+																								//meshET.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																								meshET.position.set(0, 0, 0);
+																								meshET.scale.set(2, 2, 2);
+																								meshET.visible=false;
+																								scene.add(meshET);
+																								renderer.render( scene, camera );
+																						},
+																						function (progression){
+																									taille_ET=progression.loaded;
+																									taille_totale_ET=progression.total;
+																									update_barre_progression();
+																						}
+						);
 						<?php } ?>
 
 						// prepare STL loader and load the model
 						<?php if($afficheRS) {?>
 						loader.load(dossier+'RS.json', function(geometry) {
-							materialeRS = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							meshRS = new THREE.Mesh(geometry, materialeRS);
-							//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							meshRS.position.set(0, 0, 0);
-							meshRS.scale.set(2, 2, 2);
-							meshRS.visible=false;
-							scene.add(meshRS);
-							renderer.render( scene, camera );
-						});
+																								materialeRS = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																								meshRS = new THREE.Mesh(geometry, materialeRS);
+																								//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																								meshRS.position.set(0, 0, 0);
+																								meshRS.scale.set(2, 2, 2);
+																								meshRS.visible=false;
+																								scene.add(meshRS);
+																								renderer.render( scene, camera );
+																						},
+																						function (progression){
+																									taille_RS1=progression.loaded;
+																									taille_totale_RS1=progression.total;
+																									update_barre_progression();
+																						}
+						);
 						<?php } ?>
 
 						// prepare STL loader and load the model
 						<?php if($afficheRS2) {?>
 						loader.load(dossier+'RS2.json', function(geometry) {
-							materialeRS2 = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							meshRS2 = new THREE.Mesh(geometry, materialeRS2);
-							//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							meshRS2.position.set(0, 0, 0);
-							meshRS2.scale.set(2, 2, 2);
-							meshRS2.visible=false;
-							scene.add(meshRS2);
-							renderer.render( scene, camera );
-						});
+																									materialeRS2 = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																									meshRS2 = new THREE.Mesh(geometry, materialeRS2);
+																									//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																									meshRS2.position.set(0, 0, 0);
+																									meshRS2.scale.set(2, 2, 2);
+																									meshRS2.visible=false;
+																									scene.add(meshRS2);
+																									renderer.render( scene, camera );
+																						},
+																						function (progression){
+																									taille_RS2=progression.loaded;
+																									taille_totale_RS2=progression.total;
+																									update_barre_progression();
+																						}
+						);
 						<?php } ?>
 
 						// prepare STL loader and load the model
 						<?php if($afficheRS3) {?>
 						loader.load(dossier+'RS3.json', function(geometry) {
-							materialeRS3 = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							meshRS3 = new THREE.Mesh(geometry, materialeRS3);
-							//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							meshRS3.position.set(0, 0, 0);
-							meshRS3.scale.set(2, 2, 2);
-							meshRS3.visible=false;
-							scene.add(meshRS3);
-							renderer.render( scene, camera );
-						});
+																									materialeRS3 = new THREE.MeshLambertMaterial({color:0x00ff00, transparent: true, opacity: 0.5});//new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																									meshRS3 = new THREE.Mesh(geometry, materialeRS3);
+																									//meshRS.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																									meshRS3.position.set(0, 0, 0);
+																									meshRS3.scale.set(2, 2, 2);
+																									meshRS3.visible=false;
+																									scene.add(meshRS3);
+																									renderer.render( scene, camera );
+																						},
+																						function (progression){
+																									taille_RS3=progression.loaded;
+																									taille_totale_RS3=progression.total;
+																									update_barre_progression();
+																						}
+						);
 						<?php } ?>
 
 						// prepare STL loader and load the model
 						loader.load(dossier+'ZT.json', function(geometry) {
-							materialZT = new THREE.MeshLambertMaterial({color:0xff0000, transparent: true, opacity: 0.5});//MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
-							meshZT = new THREE.Mesh(geometry, materialZT);
-							//meshZT.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
-							meshZT.position.set(0, 0, 0);
-							meshZT.scale.set(2, 2, 2);
-							meshZT.visible=false;
-							scene.add(meshZT);
-							renderer.render( scene, camera );
-						});
+																									materialZT = new THREE.MeshLambertMaterial({color:0xff0000, transparent: true, opacity: 0.5});//MeshBasicMaterial( { color: 0xff0000, wireframe: false } );//new THREE.MeshNormalMaterial();//
+																									meshZT = new THREE.Mesh(geometry, materialZT);
+																									//meshZT.rotation.set( - Math.PI / 2, 0, Math.PI / 2);
+																									meshZT.position.set(0, 0, 0);
+																									meshZT.scale.set(2, 2, 2);
+																									meshZT.visible=false;
+																									scene.add(meshZT);
+																									renderer.render( scene, camera );
+																						},
+																						function (progression){
+																									taille_ZT=progression.loaded;
+																									taille_totale_ZT=progression.total;
+																									update_barre_progression();
+																						}
+						);
 
 						//========================================================================
 						// LIGHTS
@@ -378,5 +467,15 @@ switch($get)
 		<script>
 			$("#tabs").tabs();
 		</script>
+
+
+		<div id="voileNoir">
+		</div>
+		<div id="iconeChargement">
+				Chargement...
+			<br/>
+				<progress max="1" value="0" form="form-id"></progress>
+		</div>
+
 	</body>
 </html>
