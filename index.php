@@ -11,6 +11,8 @@
 			<?php include_once("sources/Google_Analytics.php") ?>
 		</head>
 	<body>
+	
+	<?php include("bandeau.php")?>
 	    
 		<h1>Exemples de base du tolérancement géométrique</h1>
 
@@ -23,6 +25,9 @@
 							Tolérance de cylindricité<br/>
 							<img src="models/cylindricite/dessin.png"/>
 						</a>
+						<a href="~cylindricite">
+							<img style="vertical-align:middle;" alt="VR" src="./sources/images/casqueVR.png"/> <span style="vertical-align:middle">VR (pas encore fonctionnel)</span>
+						</a> 
 					</div>
 					<div class="boutonMenu">
 						<a href="-circularite">
@@ -92,16 +97,43 @@
 				<div class="listeBoutons">
 					<div class="boutonMenu">
 						<a href="levier-de-platine.php">
-							Tolérance de localisation<br/>
 							<img src="./sources/images/bouton-levier-platine.png"/>
 						</a>
 					</div>
 				</div>
 
+		<h2></h2>
+		<h1>Rail de guidage</h1>
 
 
+			
+				<div class="listeBoutons">
+					<div class="boutonMenu">
+						<a href="rail_de_guidage.php">
+							<img src="./sources/images/bouton-rail-de-guidage.png"/>
+						</a>
+					</div>
+				</div>
+
+		<h2></h2>
+		<h1>Joue inférieue d'un vanne à servomoteur</h1>
 
 
+			
+				<div class="listeBoutons">
+					<div class="boutonMenu">
+						<a href="joue_inferieure.php">
+							<img src="./sources/images/bouton_joue_inferieure.png"/>
+						</a>
+					</div>
+				</div>
 
+
+		<h2></h2>
+		<div style="text-align:right;">
+			<a href="http://contact.allais.eu?site=tolerancement" target="_blank">
+				<img src="./sources/images/icone_mail.png" alt="[ @ ]"/>
+			</a>
+		</div>
 	</body>
 </html>

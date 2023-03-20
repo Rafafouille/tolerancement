@@ -12,6 +12,7 @@ $dossier="./models/".$get."/";
 if(!is_dir($dossier))
 	$dossier="./models/cylindricite/";
 
+//Teste si les fichiers existent
 $afficheET=is_file($dossier."ET.json");
 $afficheRS=is_file($dossier."RS.json");
 $afficheRS2=is_file($dossier."RS2.json");
@@ -63,7 +64,7 @@ switch($get)
 			<!-- Bibli Javascript --------------->
 
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script src="https://libs.allais.eu/threeJS/three.min.js"></script>	<!-- http://mrdoob.github.com/three.js/build/three.min.js -->
+			<script type="text/javascript" src="sources/JS/three.min.js" ></script>
 			<!--<script src="./sources/JS/threejs/STLLoader.js"></script>-->
 			<script src="https://libs.allais.eu/threeJS/Detector.js"></script>
 			<script src="https://libs.allais.eu/threeJS/ColladaLoader.js"></script>
