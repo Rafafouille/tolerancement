@@ -13,5 +13,6 @@
 					 <area shape="rect" coords="578,417,626,431" href="http://tolerancement.allais.eu/-planeite" alt="Planéité" />
 				</map>
 			</div>
+            <div style="position:absolute;top:15px;left:35px;font-size:x-small;text-align:center;width:100%"><em>(Cliquez sur les tolérances pour les afficher en 3D)</em></div>
     </body>
 </html>

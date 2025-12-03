@@ -70,16 +70,39 @@ h2
 /* Tabs ============ */
 
 
+/* Pour les tabs sur téléphone */
+@media (max-width: 600px) {
+    .ui-tabs .ui-tabs-nav li a {
+        padding: 4px 6px !important;   /* onglets plus étroits */
+        font-size: 12px !important;    /* texte plus petit */
+    }
+
+    .ui-tabs .ui-tabs-nav li {
+        margin: 0 2px !important;
+    }
+
+    .ui-tabs .ui-tabs-panel {
+        padding: 8px !important;       /* contenu moins épais aussi */
+    }
+}
+/*
 .tab
 {
 	display:none;
+	margin:0px;
+	padding:0px;
 }
+
 
 .tab Active
 {
 	display:block;
 }
 
+#tab1
+{
+	position:relative;
+}
 
 #tabs ul
 {
@@ -96,10 +119,24 @@ h2
 	display: inline-block;
 	padding: 10px 15px;
 	cursor: pointer;
-}
+}*/
 
 
 /* 3D ============================================== */
+
+#menu3D
+{
+	height:0px;
+	width:100%;
+	overflow: visible;
+	/*position:absolute;
+	top:0px;
+	left:0px;*/
+	text-align:center;
+}
+
+
+
 #affichage
 {
 	
@@ -108,98 +145,81 @@ h2
 .interBouton
 {
 	display:inline-block;
-	width:30px;
+	width:10px;
 }
 
-/*
-	Demo CSS code
-*/
+/* Boutons menus *****/
+
+.groupe_boutons
+{
+    display:inline-block;
+	text-align:center;
+}
 
 
-/*Vire l'ancienne boxe*/
-[type="checkbox"]:not(:checked),
-[type="checkbox"]:checked {
-	position: absolute;
-	left: -9999px;
+.bouton
+{
+    width:50px;
+    height:50px;
+    cursor:pointer;
+    margin:2px;
+    display:inline-block;
+    filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.4));
+    transition: transform 0.05s, filter 0.05s;
 }
 
-/*position des labels apres les boxe*/
-[type="checkbox"]:not(:checked) + label,
-[type="checkbox"]:checked + label {
-	position: relative;
-	padding-left: 75px;
-	cursor: pointer;
+.bouton:active
+{
+    transform: translate(2px, 2px);
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.8));
 }
 
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before,
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-	content: '';
-	position: absolute;
-}
-[type="checkbox"]:not(:checked) + label:before,
-[type="checkbox"]:checked + label:before {
-	left:0; top: -3px;
-	width: 65px; height: 30px;
-	background: #DDDDDD;
-	border-radius: 15px;
-	-webkit-transition: background-color .2s;
-	-moz-transition: background-color .2s;
-	-ms-transition: background-color .2s;
-	transition: background-color .2s;
-}
-[type="checkbox"]:not(:checked) + label:after,
-[type="checkbox"]:checked + label:after {
-	width: 20px; height: 20px;
-	-webkit-transition: all .2s;
-	-moz-transition: all .2s;
-	-ms-transition: all .2s;
-	transition: all .2s;
-	border-radius: 50%;
-	background: #7F8C9A;
-	top: 2px; left: 5px;
+.bouton.allume
+{
+    
 }
 
-/* on checked */
-[type="checkbox"]:checked + label:before {
-	background:#34495E; 
-}
-[type="checkbox"]:checked + label:after {
-	background: #39D2B4;
-	top: 2px; left: 40px;
+.bouton.eteint img
+{
+    filter: grayscale(100%);
+    opacity:0.5;
 }
 
-[type="checkbox"]:checked + label .ui,
-[type="checkbox"]:not(:checked) + label .ui:before,
-[type="checkbox"]:checked + label .ui:after {
-	position: absolute;
-	left: 6px;
-	width: 65px;
-	border-radius: 15px;
-	font-size: 14px;
-	font-weight: bold;
-	line-height: 22px;
-	-webkit-transition: all .2s;
-	-moz-transition: all .2s;
-	-ms-transition: all .2s;
-	transition: all .2s;
+.bouton img
+{
+    width:100%:
+    padding:0px;
 }
-[type="checkbox"]:not(:checked) + label .ui:before {
-	content: "non";
-	left: 29px;
+
+
+label
+    {display:inline-block;
+    cursor:pointer;
+	font-size:small;}
+
+#label_nominal
+    {width:50px;
+    text-align:right;}
+
+#label_reel
+    {width:35px;
+    text-align:left;}
+
+#label_ET
+    {width:115px;
+    text-align:left;}
+    
+input[type="range"]
+{
+    margin-top:0px;
+	width:100px;
 }
-[type="checkbox"]:checked + label .ui:after {
-	content: "oui";
-	color: #39D2B4;
-}
-[type="checkbox"]:focus + label:before {
-	border: 1px dashed #777;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
-	margin-top: -1px;
+   
+ 
+
+#container
+{
+
 }
 
 
@@ -215,7 +235,40 @@ h2
 
 
 /* Back Bouton *********************** */
-.button {
+.conteneur_bouton_retour
+{
+    height:0px;
+	overflow: visible;
+	position: absolute;
+	top : 18px;
+	right:18px;
+	z-index: 100;
+}
+
+.conteneur_bouton_retour img
+{
+    width:40px;
+    height:auto;
+}
+
+@media (max-width: 600px) {
+    .conteneur_bouton_retour
+    {
+        height:0px;
+	    overflow: visible;
+	    position: absolute;
+	    top : 18px;
+	    right:18px;
+	    z-index: 100;
+    }
+    .conteneur_bouton_retour img
+    {
+        width:22px;
+      
+    }
+}
+
+/*.bouton_flottant {
 	position:absolute;
 	right:0;
 	top:0;
@@ -243,7 +296,7 @@ h2
         color-stop(0.5, #194fdb),
         to(#194fdb));
 }
-
+*/
 
 
 /* GPS ********* */

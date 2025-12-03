@@ -1,1 +1,1 @@
-../allais/bandeau.php
+/home/raf/internet/allais/bandeau.php
