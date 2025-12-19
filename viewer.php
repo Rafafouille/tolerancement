@@ -32,6 +32,7 @@ $chargeRS2=is_file($dossier."RS2.obj") && is_file($dossier."RS2.mtl");
 $chargeRS3=is_file($dossier."RS3.obj") && is_file($dossier."RS3.mtl");
 $chargeZT=is_file($dossier."ZT.obj") && is_file($dossier."ZT.mtl");
 $afficheGrilleGPS=is_file($dossier."/GPS.txt");
+$afficheDessin=is_file($dossier."/dessin.png");
 
 
 // Pour choisir le nom à afficher (à partir du nom du dossier)
@@ -118,7 +119,10 @@ switch($get)
             <!------ Boutons des tabs ----- -->
             <ul>
 	            <li><a href="#tab1">Modèle 3D</a></li>
-	            <li><a href="#tab2">Dessin de définition</a></li>
+	            <?php
+	            if($afficheDessin)
+	            {echo '<li><a href="#tab2">Dessin de définition</a></li>';}
+	            ?>
 	            <?php
 	            if($afficheGrilleGPS) // Si le fichier Grille GPS existe
 	            {echo '<li><a href="#tab3">Matrice GPS</a></li>';}

@@ -16,6 +16,16 @@
 					 <area shape="rect" coords="531,547,647,576" href="./-LEVIER-forme2" alt="Défaut de forme" />
 				</map>
 			</div>
+			
+		    <!-- texte clique ----- -->
             <div style="position:absolute;top:15px;left:35px;font-size:x-small;text-align:center;width:100%"><em>(Cliquez sur les tolérances pour les afficher en 3D)</em></div>
+            
+            
+		    <!-- bouton Retour ----- -->
+		    <div style="width:50px;position:absolute;top:10px;right:10px;font-size:x-small;text-align:right;width:100%" >
+		        <a href="./">
+		            <img title="Retour" style="width:50px;" src="./sources/images/bouton_retour.svg" />
+		        </a>
+		    </div>
     </body>
 </html>
